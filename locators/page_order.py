@@ -41,3 +41,10 @@ class OrderPageLocators:
         By.XPATH,
         "//div[contains(@class,'Order_ModalHeader')]"
     )
+    PERIOD_1 = (
+        By.XPATH, 
+        "//div[text()='сутки']"
+    )
+    PERIOD_2 = (
+        By.XPATH, "//div[text()='двое суток']"
+    )

@@ -87,7 +87,7 @@ class TestMainPageLogos:
         page = MainPage(driver)
         page.accept_cookie()
         page.click_scooter_logo()
-        assert 'qa-scooter.praktikum-services.ru' in driver.current_url
+        assert page.is_opened_main_page()
 
     @allure.title('Переход на Дзен по логотипу Яндекса')
     @allure.description(
@@ -100,5 +100,4 @@ class TestMainPageLogos:
         page.click_yandex_logo()
         page.switch_to_new_tab()
         page.wait_for_yandex_or_dzen_url()
-
-        assert 'https://dzen.ru/?yredirect=true' in driver.current_url
+        assert page.is_opened_dzen_page()

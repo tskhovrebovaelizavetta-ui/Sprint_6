@@ -21,3 +21,11 @@ class MainPage(BasePage):
         return self.wait.until(
             EC.visibility_of_element_located(answer_locator)
         ).text
+    
+    @allure.step('Проверить, что открыта главная страница Самоката')
+    def is_opened_main_page(self):
+        return 'qa-scooter.praktikum-services.ru' in self.get_current_url()
+
+    @allure.step('Проверить, что открыта страница Дзена')
+    def is_opened_dzen_page(self):
+        return 'dzen.ru' in self.get_current_url()

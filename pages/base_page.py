@@ -54,8 +54,16 @@ class BasePage:
         self.wait.until(lambda d: len(d.window_handles) > 1)
         self.driver.switch_to.window(self.driver.window_handles[-1])
        
+    @allure.step('Получить текущий URL страницы')
+    def get_current_url(self):
+        return self.driver.current_url
+
+    @allure.step('Дождаться, что URL содержит: {url_part}')
+    def wait_for_url_contains(self, url_part):
+        self.wait.until(lambda d: url_part in d.current_url)
+
     @allure.step('Дождаться открытия страницы Яндекса или Дзена')
     def wait_for_yandex_or_dzen_url(self):
         self.wait.until(
-        lambda d: 'dzen.ru' in d.current_url 
-    )
+            lambda d: 'dzen.ru' in d.current_url or 'yandex.ru' in d.current_url
+        )
